@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:p="http://www.springframework.org/schema/p"
+	xsi:schemaLocation="
+           http://www.springframework.org/schema/beans
+           http://www.springframework.org/schema/beans/spring-beans.xsd
+           http://www.springframework.org/schema/context
+           http://www.springframework.org/schema/context/spring-context.xsd">
+
+	<!-- Declare Student bean -->
+	<bean class="com.springcore.Student" id="student1">
+		<property name="studentId" value="2020" />
+		<property name="studentName" value="Vinay" />
+		<property name="studentAddress" value="Surat" />
+	</bean>
+
+	<!-- Create second student bean using p namespace -->
+	<bean class="com.springcore.Student" id="student2"
+		p:studentId="1010" p:studentName="AAkash" p:studentAddress="Mumbai" />
+
+	<!-- COLLECTIONS -->
+	<bean class="com.springcore.collectons.Emp" id="emp1">
+		<property name="name" value="Rohan" />
+		<property name="phone">
+			<list>
+				<value>1234567890</value>
+				<value>9944376820</value>
+			</list>
+		</property>
+		<property name="address">
+			<set>
+				<value>Surat</value>
+				<value>Katargam</value>
+			</set>
+		</property>
+		<property name="courses">
+			<map>
+				<entry key="java" value="2Month" />
+				<entry key="python" value="2Month" />
+			</map>
+		</property>
+	</bean>
+
+
+
+	<!-- Bean for Emp with p namespace -->
+	<bean class="com.springcore.collectons.Emp" id="emp2"
+		p:name="Vikash" p:phone-ref="phone" p:address-ref="address" p:courses-ref="courses"/>
+
+	<bean id="phone" class="java.util.ArrayList">
+		<constructor-arg>
+			<list>
+				<value>123-456-7890</value>
+				<value>098-765-4321</value>
+			</list>
+		</constructor-arg>
+	</bean>
+
+	<bean id="address" class="java.util.HashSet">
+		<constructor-arg>
+			<set>
+				<value>123 Elm St</value>
+				<value>456 Oak St</value>
+			</set>
+		</constructor-arg>
+	</bean>
+
+	<bean id="courses" class="java.util.HashMap">
+		<constructor-arg>
+			<map>
+				<entry key="java" value="2Month" />
+				<entry key="python" value="3Month" />
+				<entry key="c++" value="1Month" />
+			</map>
+		</constructor-arg>
+	</bean>
+
+
+
+
+</beans>

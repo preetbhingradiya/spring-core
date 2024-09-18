@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:p="http://www.springframework.org/schema/p"
+	xmlns:c="http://www.springframework.org/schema/c"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans 
+                           http://www.springframework.org/schema/beans/spring-beans.xsd
+                           http://www.springframework.org/schema/context
+                           http://www.springframework.org/schema/context/spring-context.xsd">
+
+	<context:annotation-config />
+
+	<!-- Use of AutoWrite -->
+<!-- 	<bean class="com.springcore.auto.wire.annotaion.Address" -->
+<!-- 		name="address" p:street="Katargam" p:city="Surat"></bean> -->
+
+<!-- 	<bean class="com.springcore.auto.wire.annotaion.Emp" name="emp1" /> -->
+
+
+
+	<!-- Use of Qualifier -->
+	<bean id="address" class="com.springcore.auto.wire.annotaion.Address" c:street="Katargam" c:city="Surat"/>
+    <bean id="ad1" class="com.springcore.auto.wire.annotaion.Address" c:street="Varachha" c:city="Surat"/>
+
+    <!-- Define EmpQulifier bean with constructor-based injection -->
+    <bean id="emp2" class="com.springcore.auto.wire.annotaion.EmpQulifier" c:address-ref="address" c:ad1-ref="ad1"/>
+
+</beans>	
